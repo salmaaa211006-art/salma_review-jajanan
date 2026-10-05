@@ -4,700 +4,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Review jajanan Sidoarjo dengan penerapan HTML semantik dan desain responsive.">
-    <title>Rasa Lokal — Review Jajanan Sidoarjo</title>
-
-    <style>
-        :root {
-            --maroon: #5b1718;
-            --maroon-dark: #3c1011;
-            --cream: #f7f1e8;
-            --paper: #fffdf9;
-            --ink: #272321;
-            --muted: #756c65;
-            --line: #e5dbd0;
-            --accent: #b9794d;
-            --soft: #f1e7dc;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            margin: 0;
-            color: var(--ink);
-            background:
-                radial-gradient(circle at 10% 0%, rgba(185, 121, 77, .10), transparent 28rem),
-                var(--cream);
-            font-family: Georgia, "Times New Roman", serif;
-            line-height: 1.75;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        .site-header {
-            position: relative;
-            overflow: hidden;
-            color: #fff;
-            background:
-                linear-gradient(135deg, rgba(60, 16, 17, .98), rgba(91, 23, 24, .95));
-        }
-
-        .site-header::after {
-            content: "";
-            position: absolute;
-            width: 320px;
-            height: 320px;
-            right: -120px;
-            top: -150px;
-            border: 1px solid rgba(255, 255, 255, .13);
-            border-radius: 50%;
-            box-shadow:
-                0 0 0 35px rgba(255, 255, 255, .025),
-                0 0 0 70px rgba(255, 255, 255, .018);
-        }
-
-        .nav {
-            width: min(1120px, calc(100% - 40px));
-            margin: auto;
-            min-height: 68px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: relative;
-            z-index: 2;
-        }
-
-        .brand {
-            font-family: Arial, sans-serif;
-            font-size: 1rem;
-            font-weight: 800;
-            letter-spacing: .12em;
-            text-transform: uppercase;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 24px;
-            font-family: Arial, sans-serif;
-            font-size: .85rem;
-            color: rgba(255, 255, 255, .78);
-        }
-
-        .nav-links a:hover {
-            color: #fff;
-        }
-
-        .hero {
-            width: min(1120px, calc(100% - 40px));
-            margin: auto;
-            padding: 72px 0 84px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .eyebrow {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin: 0 0 18px;
-            font-family: Arial, sans-serif;
-            font-size: .78rem;
-            font-weight: 700;
-            letter-spacing: .18em;
-            text-transform: uppercase;
-            color: #e8c7ad;
-        }
-
-        .eyebrow::before {
-            content: "";
-            width: 34px;
-            height: 1px;
-            background: #d99b6f;
-        }
-
-        .hero h1 {
-            max-width: 850px;
-            margin: 0;
-            font-size: clamp(2.7rem, 7vw, 5.8rem);
-            line-height: .98;
-            letter-spacing: -.045em;
-            font-weight: 500;
-        }
-
-        .hero h1 em {
-            color: #e2b48f;
-        }
-
-        .hero-copy {
-            max-width: 690px;
-            margin: 24px 0 0;
-            color: rgba(255, 255, 255, .75);
-            font-size: clamp(1rem, 2vw, 1.15rem);
-        }
-
-        .hero-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 30px;
-        }
-
-        .meta-chip {
-            padding: 8px 13px;
-            border: 1px solid rgba(255, 255, 255, .18);
-            border-radius: 999px;
-            background: rgba(255, 255, 255, .06);
-            font-family: Arial, sans-serif;
-            font-size: .78rem;
-            color: rgba(255, 255, 255, .88);
-        }
-
-        main {
-            width: min(1120px, calc(100% - 40px));
-            margin: -34px auto 0;
-            position: relative;
-            z-index: 3;
-        }
-
-        .review-shell {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr) 290px;
-            gap: 24px;
-            align-items: start;
-        }
-
-        article,
-        aside {
-            background: var(--paper);
-            border: 1px solid var(--line);
-            box-shadow: 0 20px 55px rgba(57, 37, 24, .08);
-        }
-
-        article {
-            border-radius: 18px;
-            overflow: hidden;
-        }
-
-        .article-top {
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-            gap: 24px;
-            padding: 34px 38px 28px;
-            border-bottom: 1px solid var(--line);
-        }
-
-        .article-top h2 {
-            margin: 0;
-            font-size: clamp(1.8rem, 4vw, 2.7rem);
-            line-height: 1.1;
-            font-weight: 600;
-        }
-
-        .category {
-            margin: 0 0 7px;
-            color: var(--accent);
-            font-family: Arial, sans-serif;
-            font-size: .72rem;
-            font-weight: 800;
-            letter-spacing: .14em;
-            text-transform: uppercase;
-        }
-
-        .score {
-            min-width: 112px;
-            padding: 12px 14px;
-            border-radius: 12px;
-            background: var(--maroon);
-            color: #fff;
-            text-align: center;
-            font-family: Arial, sans-serif;
-        }
-
-        .score strong {
-            display: block;
-            font-size: 1.35rem;
-            line-height: 1;
-        }
-
-        .score span {
-            font-size: .68rem;
-            opacity: .75;
-        }
-
-        .content {
-            padding: 34px 38px 42px;
-        }
-
-        .lead {
-            margin-top: 0;
-            font-size: 1.12rem;
-        }
-
-        .dropcap::first-letter {
-            float: left;
-            margin: 8px 10px 0 0;
-            color: var(--maroon);
-            font-size: 4.2rem;
-            line-height: .72;
-            font-weight: 700;
-        }
-
-        section {
-            scroll-margin-top: 24px;
-        }
-
-        h3 {
-            display: flex;
-            align-items: center;
-            gap: 11px;
-            margin: 36px 0 10px;
-            font-family: Arial, sans-serif;
-            font-size: .82rem;
-            letter-spacing: .12em;
-            text-transform: uppercase;
-            color: var(--maroon);
-        }
-
-        h3::before {
-            content: "";
-            width: 22px;
-            height: 2px;
-            background: var(--accent);
-        }
-
-        p {
-            margin: 0 0 14px;
-        }
-
-        .facts {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin: 26px 0 8px;
-        }
-
-        .fact {
-            padding: 17px;
-            border: 1px solid var(--line);
-            background: #fbf7f1;
-            border-radius: 12px;
-        }
-
-        .fact-label {
-            display: block;
-            margin-bottom: 4px;
-            color: var(--muted);
-            font-family: Arial, sans-serif;
-            font-size: .68rem;
-            font-weight: 700;
-            letter-spacing: .1em;
-            text-transform: uppercase;
-        }
-
-        .fact-value {
-            font-size: 1.03rem;
-            font-weight: 700;
-        }
-
-        ul,
-        ol {
-            margin: 10px 0 0;
-            padding-left: 24px;
-        }
-
-        li+li {
-            margin-top: 7px;
-        }
-
-        li::marker {
-            color: var(--accent);
-        }
-
-        address {
-            padding: 18px 20px;
-            border-left: 3px solid var(--accent);
-            border-radius: 0 10px 10px 0;
-            background: var(--soft);
-            font-style: normal;
-        }
-
-        blockquote {
-            margin: 28px 0 0;
-            padding: 22px 24px;
-            border: 1px solid var(--line);
-            border-left: 4px solid var(--maroon);
-            background: #fbf7f1;
-            font-size: 1.04rem;
-            font-style: italic;
-        }
-
-        hr {
-            margin: 38px 0;
-            border: 0;
-            border-top: 1px solid var(--line);
-        }
-
-        .tag-list {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 9px;
-            padding: 0;
-            list-style: none;
-        }
-
-        .tag-list li {
-            margin: 0;
-            padding: 12px 14px;
-            border: 1px solid var(--line);
-            border-radius: 9px;
-            background: #fbf7f1;
-            font-family: Arial, sans-serif;
-            font-size: .84rem;
-        }
-
-        code {
-            padding: 3px 6px;
-            border-radius: 5px;
-            background: #eee4d8;
-            color: var(--maroon);
-            font-family: Consolas, monospace;
-            font-size: .9em;
-        }
-
-        aside {
-            position: sticky;
-            top: 20px;
-            border-radius: 16px;
-            padding: 24px;
-        }
-
-        aside .side-label {
-            margin: 0 0 5px;
-            color: var(--accent);
-            font-family: Arial, sans-serif;
-            font-size: .68rem;
-            font-weight: 800;
-            letter-spacing: .14em;
-            text-transform: uppercase;
-        }
-
-        aside h2 {
-            margin: 0 0 18px;
-            font-size: 1.35rem;
-        }
-
-        .toc {
-            display: grid;
-            gap: 3px;
-        }
-
-        .toc a {
-            padding: 9px 10px;
-            border-radius: 7px;
-            font-family: Arial, sans-serif;
-            font-size: .86rem;
-            color: var(--muted);
-        }
-
-        .toc a:hover {
-            background: var(--soft);
-            color: var(--maroon);
-        }
-
-        .note {
-            margin-top: 22px;
-            padding-top: 18px;
-            border-top: 1px solid var(--line);
-            font-family: Arial, sans-serif;
-            font-size: .78rem;
-            color: var(--muted);
-        }
-
-        footer {
-            width: min(1120px, calc(100% - 40px));
-            margin: 0 auto;
-            padding: 30px 0 42px;
-            text-align: center;
-            color: var(--muted);
-            font-family: Arial, sans-serif;
-            font-size: .78rem;
-        }
-
-        @media (max-width: 850px) {
-            .review-shell {
-                grid-template-columns: 1fr;
-            }
-
-            aside {
-                position: static;
-                order: -1;
-            }
-
-            .toc {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .hero {
-                padding-top: 54px;
-            }
-        }
-
-        @media (max-width: 620px) {
-
-            .nav,
-            .hero,
-            main,
-            footer {
-                width: min(100% - 24px, 1120px);
-            }
-
-            .nav {
-                min-height: 58px;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .hero {
-                padding: 48px 0 70px;
-            }
-
-            .hero h1 {
-                font-size: clamp(2.45rem, 14vw, 4rem);
-            }
-
-            main {
-                margin-top: -28px;
-            }
-
-            .article-top {
-                align-items: flex-start;
-                flex-direction: column;
-                padding: 26px 20px 22px;
-            }
-
-            .content {
-                padding: 25px 20px 32px;
-            }
-
-            .facts,
-            .tag-list,
-            .toc {
-                grid-template-columns: 1fr;
-            }
-
-            .score {
-                width: 100%;
-            }
-
-            .dropcap::first-letter {
-                font-size: 3.5rem;
-            }
-        }
-
-        @media (max-width: 380px) {
-            body {
-                font-size: 15px;
-            }
-
-            .hero-copy {
-                font-size: .94rem;
-            }
-
-            .content {
-                padding-inline: 17px;
-            }
-        }
-    </style>
+    <title>Review Jajanan Hits Sidoarjo</title>
 </head>
 
 <body>
 
-    <header class="site-header">
-        <nav class="nav" aria-label="Navigasi utama">
-            <a class="brand" href="#review">Rasa Lokal</a>
-            <div class="nav-links">
-                <a href="#review">Review</a>
-                <a href="#menu">Menu</a>
-                <a href="#alamat">Lokasi</a>
-                <a href="#html">HTML</a>
-            </div>
-        </nav>
+    <!--
+        BAGIAN JUDUL
+        <h1> digunakan untuk judul utama.
+        <u> digunakan untuk memberi tanda garis bawah pada nama tertentu.
+        <mark> digunakan untuk memberi sorotan pada teks.
+    -->
 
-        <div class="hero">
-            <p class="eyebrow">Tugas Dasar HTML · Sidoarjo</p>
-            <h1>Menikmati <em>rasa lokal</em>, satu jajanan dalam satu cerita.</h1>
-            <p class="hero-copy">
-                Halaman review sederhana yang menggabungkan struktur HTML semantik
-                dengan tampilan editorial yang bersih, responsif, dan nyaman dibaca.
-            </p>
+    <h1>
+        Review Jajanan Hits Sidoarjo:
+        <u>Tahu Tek</u>
+    </h1>
 
-            <div class="hero-meta">
-                <span class="meta-chip">Review Jajanan</span>
-                <span class="meta-chip">HTML Semantik</span>
-                <span class="meta-chip">Responsive Design</span>
-            </div>
-        </div>
-    </header>
+    <p>
+        Halo semuanya! Selamat datang di halaman review jajanan.
+        Kali ini kita akan membahas salah satu jajanan yang
+        <mark>recommended</mark> untuk dicoba.
+    </p>
 
-    <main id="review">
-        <div class="review-shell">
+    <hr>
 
-            <article>
-                <header class="article-top">
-                    <div>
-                        <p class="category">Local Food Review</p>
-                        <h2>Tahu Tek</h2>
-                    </div>
 
-                    <div class="score" aria-label="Rating 4,5 dari 5">
-                        <strong>4,5 ★</strong>
-                        <span>RATING REVIEW</span>
-                    </div>
-                </header>
+    <!--
+        BAGIAN VIBE DAN RASA
+        <h2> digunakan sebagai subjudul.
+        <i> digunakan untuk istilah asing.
+        <em> digunakan untuk memberikan penekanan.
+        <small> digunakan untuk catatan tambahan.
+    -->
 
-                <div class="content">
+    <h2>1. Rasa dan Karakter Jajanan</h2>
 
-                    <p class="lead dropcap">
-                        <strong>Tahu Tek</strong> merupakan salah satu contoh jajanan
-                        yang menarik untuk dibahas dalam sebuah halaman review.
-                        Perpaduan tahu, lontong, sayuran, serta saus kacang dan petis
-                        memberikan karakter rasa yang khas.
-                    </p>
+    <p>
+        Tahu Tek memiliki perpaduan rasa
+        <i>traditional</i> yang cukup khas.
+        Saus kacang dan petis memberikan rasa yang
+        <em>sangat</em> kuat dan menjadi ciri utama
+        dari makanan ini.
+    </p>
 
-                    <section aria-labelledby="informasi">
-                        <h3 id="informasi">Informasi Review</h3>
+    <p>
+        <small>
+            Catatan: Isi review ini dibuat sebagai contoh
+            untuk tugas pemrograman berbasis web.
+        </small>
+    </p>
 
-                        <div class="facts">
-                            <div class="fact">
-                                <span class="fact-label">Harga</span>
-                                <span class="fact-value">Rp10.000–Rp15.000</span>
-                            </div>
 
-                            <div class="fact">
-                                <span class="fact-label">Rating</span>
-                                <span class="fact-value">4,5 / 5</span>
-                            </div>
+    <!--
+        BAGIAN MENU
+        <ul> dan <li> digunakan untuk daftar.
+        <b> digunakan untuk nama produk.
+        <strong> digunakan untuk informasi yang penting.
+        <s> digunakan untuk informasi yang sudah tidak berlaku.
+    -->
 
-                            <div class="fact">
-                                <span class="fact-label">Waktu</span>
-                                <span class="fact-value">Sore–malam</span>
-                            </div>
-                        </div>
-                    </section>
+    <h2>2. Menu dan Harga</h2>
 
-                    <section id="menu" aria-labelledby="menu-title">
-                        <h3 id="menu-title">Isi Menu</h3>
-                        <ul>
-                            <li>Tahu goreng</li>
-                            <li>Lontong</li>
-                            <li>Tauge</li>
-                            <li>Kentang</li>
-                            <li>Telur</li>
-                            <li>Saus kacang dan petis</li>
-                        </ul>
-                    </section>
+    <p>
+        Berikut beberapa contoh menu yang dapat ditemukan
+        pada halaman review:
+    </p>
 
-                    <section aria-labelledby="kelebihan">
-                        <h3 id="kelebihan">Kelebihan</h3>
-                        <ol>
-                            <li>Memiliki perpaduan rasa gurih dengan saus yang khas.</li>
-                            <li>Porsinya cukup mengenyangkan untuk makanan ringan.</li>
-                            <li>Komposisi menu mudah dijelaskan dalam sebuah review.</li>
-                        </ol>
-                    </section>
+    <ul>
+        <li>
+            <b>Tahu Tek Original</b> - Tahu, lontong, tauge,
+            kentang, telur, dan saus petis.
+        </li>
 
-                    <section aria-labelledby="catatan">
-                        <h3 id="catatan">Hal yang Perlu Diperhatikan</h3>
-                        <p>
-                            Rasa petis cukup khas sehingga tingkat kecocokannya dapat
-                            berbeda sesuai selera. Informasi harga pada halaman ini
-                            merupakan <em>contoh konten tugas</em>, bukan daftar harga
-                            dari penjual tertentu.
-                        </p>
-                    </section>
+        <li>
+            <b>Tahu Telur</b> - Tahu dan telur dengan
+            saus kacang.
+        </li>
 
-                    <section id="alamat" aria-labelledby="alamat-title">
-                        <h3 id="alamat-title">Alamat</h3>
-                        <address>
-                            Contoh lokasi review:<br>
-                            Area jajanan Sidoarjo, Jawa Timur<br>
-                            Indonesia
-                        </address>
-                    </section>
+        <li>
+            Paket Hemat:
+            <s>Rp20.000</s>
+            menjadi
+            Rp15.000
+            (<strong>Harga contoh untuk tugas</strong>).
+        </li>
+    </ul>
 
-                    <section aria-labelledby="kesimpulan">
-                        <h3 id="kesimpulan">Kesimpulan</h3>
-                        <p>
-                            Secara keseluruhan, <em>Tahu Tek</em> dapat menjadi objek
-                            yang tepat untuk contoh halaman review karena informasinya
-                            dapat disusun dengan struktur HTML yang jelas, mulai dari
-                            judul, paragraf, daftar, alamat, hingga kutipan.
-                        </p>
 
-                        <blockquote>
-                            “Sebuah halaman review tidak hanya membutuhkan tampilan
-                            yang menarik, tetapi juga struktur teks yang jelas dan
-                            sesuai fungsi.”
-                        </blockquote>
-                    </section>
+    <!--
+        BAGIAN REVISI TEKS
+        <del> digunakan untuk teks yang dihapus.
+        <ins> digunakan untuk teks yang ditambahkan.
+    -->
 
-                    <hr>
+    <p>
+        Menu tambahan:
+        <del>Es Kopi</del>
+        <ins>Es Teh Manis</ins>
+        - Rp5.000
+    </p>
 
-                    <section id="html" aria-labelledby="html-title">
-                        <h2 id="html-title">Penerapan Tag HTML</h2>
 
-                        <ul class="tag-list">
-                            <li><code>&lt;h1&gt;</code> — judul utama</li>
-                            <li><code>&lt;h2&gt;</code> — judul bagian</li>
-                            <li><code>&lt;h3&gt;</code> — subbagian</li>
-                            <li><code>&lt;p&gt;</code> — paragraf</li>
-                            <li><code>&lt;strong&gt;</code> — penekanan penting</li>
-                            <li><code>&lt;em&gt;</code> — penekanan istilah</li>
-                            <li><code>&lt;ul&gt;</code> — daftar tanpa urutan</li>
-                            <li><code>&lt;ol&gt;</code> — daftar berurutan</li>
-                            <li><code>&lt;address&gt;</code> — informasi alamat</li>
-                            <li><code>&lt;blockquote&gt;</code> — kutipan</li>
-                        </ul>
-                    </section>
+    <!--
+        BAGIAN SUBSCRIPT DAN SUPERSCRIPT
+        <sub> membuat teks menjadi subscript.
+        <sup> membuat teks menjadi superscript.
+    -->
 
-                </div>
-            </article>
+    <h2>3. Informasi Tambahan</h2>
 
-            <aside aria-label="Daftar isi">
-                <p class="side-label">On this page</p>
-                <h2>Ringkasan</h2>
+    <p>
+        Contoh penulisan rumus air:
+        H<sub>2</sub>O
+    </p>
 
-                <nav class="toc">
-                    <a href="#review">01 — Review</a>
-                    <a href="#menu">02 — Isi Menu</a>
-                    <a href="#alamat">03 — Alamat</a>
-                    <a href="#html">04 — Tag HTML</a>
-                </nav>
+    <p>
+        Contoh penulisan tingkatan:
+        1<sup>st</sup> pilihan makanan.
+    </p>
 
-                <p class="note">
-                    Desain dibuat responsive sehingga susunan konten menyesuaikan
-                    ukuran layar smartphone, tablet, dan desktop.
-                </p>
-            </aside>
 
-        </div>
-    </main>
+    <!--
+        BAGIAN TESTIMONI
+        <q> digunakan untuk kutipan pendek.
+        <blockquote> digunakan untuk kutipan dalam bentuk blok.
+    -->
 
-    <footer>
-        <p>✦ &copy; 2026 · Tugas Dasar HTML · Review Jajanan Sidoarjo</p>
-    </footer>
+    <h2>4. Testimoni</h2>
+
+    <p>
+        Salah satu teman mengatakan:
+        <q>
+            Rasanya gurih dan saus petisnya cukup khas.
+        </q>
+    </p>
+
+    <blockquote>
+        Tahu Tek menjadi salah satu pilihan jajanan
+        yang menarik untuk dicoba, terutama bagi orang
+        yang menyukai makanan dengan rasa gurih dan
+        saus petis yang kuat.
+    </blockquote>
+
+
+    <!--
+        BAGIAN TIPS
+        <kbd> digunakan untuk menampilkan input keyboard.
+        <pre> digunakan agar format teks dan spasi tetap dipertahankan.
+    -->
+
+    <h2>5. Tips Menyimpan Halaman</h2>
+
+    <p>
+        Untuk menyimpan halaman web ke bookmark browser,
+        tekan
+        <kbd>Ctrl</kbd>
+        +
+        <kbd>D</kbd>.
+    </p>
+
+    <p>
+        Contoh potongan kode:
+    </p>
+
+    <pre>
+if (review == "Tahu Tek") {
+    rating = "4.5";
+    status = "Recommended";
+}
+</pre>
+
+
+    <hr>
+
+
+    <!--
+        BAGIAN ALAMAT
+        <address> digunakan untuk informasi lokasi/kontak.
+        <abbr> digunakan untuk singkatan.
+        <time> digunakan untuk informasi waktu.
+    -->
+
+    <h2>6. Lokasi dan Jam Buka</h2>
+
+    <address>
+        <abbr title="Jalan">Jl.</abbr> Contoh Jajanan Sidoarjo<br>
+        Sidoarjo, Jawa Timur<br>
+        Indonesia<br><br>
+
+        Jam operasional:
+        <time>09:00 - 22:00</time>
+    </address>
+
+
+    <hr>
+
+
+    <!--
+        BAGIAN KESIMPULAN
+    -->
+
+    <h2>7. Kesimpulan</h2>
+
+    <p>
+        Berdasarkan contoh review tersebut,
+        Tahu Tek dapat menjadi pilihan jajanan
+        yang menarik untuk dicoba.
+        Halaman ini juga menerapkan berbagai
+        tag HTML sesuai dengan fungsi masing-masing.
+    </p>
 
 </body>
 
